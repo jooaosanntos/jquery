@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Eventos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        input {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Eventos #02</h1>
+    <div id='div1'>1</div>
+    <div id="resultado1">?</div>
+    <br>
+    <input type="text" placeholder="Digite e Selecione">
+    <div id="resultado2">?</div>
+    <script>
+
+        // 1) Hover
+        const alterarDestaque = () => $("#div1").toggleClass("destaque")
+
+        // Com jQuery: ele chama uma para o "mouseover" e outra pro "mousedown"
+        // $("#div1").on("mouseenter mouseleave", alterarDestaque)
+        $("#div1").hover(alterarDestaque, alterarDestaque)
+
+        // Sem jQuery
+        // $("#div1").get(0).addEventListener("mouseover", alterarDestaque)
+        // $("#div1").get(0).addEventListener("mouseleave", alterarDestaque)
+
+        // 2) One
+        $("#div1").one("mouseover", e => alert("Aviso importante!"))
+
+        // Sem jQuery
+        // const dispararAlerta = (event) => {
+        //     alert("Importante!")
+        //     event.target.removeEventListener("mouseenter", dispararAlerta)
+        // }
+        // $("#div1").get(0).addEventListener("mouseenter", dispararAlerta)
+
+        // 3) DoubleClick
+        $("#div1").dblclick((event) => $(event.target).fadeOut(1000).fadeIn(1000))
+        
+        // Sem jQuery
+        // $("#div1").get(0).addEventListener("dblclick", (event) => $(event.target).fadeOut(1000).fadeIn(1000))
+
+        // 4) Resize
+        $(window).resize(function (event) {
+            const largura = $(this).width()
+            const altura = $(this).height()
+            $("#resultado1").html(`Largura: ${largura} Altura: ${altura}`)
+        })
+
+        // Sem jQuery
+        // window.addEventListener("resize", (event) => {
+        //     const janela = event.target
+        //     $("#resultado1").html(`Largura: ${janela.innerWidth} Altura: ${janela.innerHeight}`)
+        // })
+
+        // 5) Select
+        $(":input").select(event => {
+            const input = event.target
+            const inicio = input.selectionStart
+            const fim = input.selectionEnd
+            $("#resultado2").html($(input).val().substring(inicio, fim))
+        })
+
+    </script>
+</body>

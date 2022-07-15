@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Manipulando CSS</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Manipulando CSS</h1>
+    <div id='div1'>1</div>
+    <div id='div2'>2</div>
+    <div id='div3'>3</div>
+    <div id='resultado'></div>
+    <script>
+        // 1) Pegar atributo CSS
+        
+        // Aqui eu pego o estilo de um elemento
+        const fonte = $("#div1").css("font-family")
+        $("#resultado").append(`Fonte é ${fonte}`)
+        // Posso fazer isso com:
+        console.log(window.getComputedStyle($("#div1").get(0)).fontFamily)
+        // Se ele pego o elemento e procuro o css, então eu encontro as regras css que eu defini
+
+        // 2) Setar propriedade
+        $("#div1").css("font-size", "80px")
+        
+        // 3) Setar várias propriedade ao mesmo tempo
+        $("#div1").css({"font-weight": "light", "color": "purple"})
+
+        // 4) Passar uma função como valor de uma propriedade
+        const aumentarFonte = () => {
+            return `${5+5}px`
+        }
+        $("#div2").css("font-size", aumentarFonte)
+
+        // 5) Classes
+        $("div").addClass("destaque")
+        $("#resultado").removeClass("destaque")
+
+        // Tem a classe x?
+        const temClasse = $("#div1").hasClass("destaque")
+        $("#resultado").append(`<br>Tem classe? ${temClasse}!`)
+        console.log($("#resultado").get(0).classList.contains("destaque"))
+        // Toggle class
+        $("#div3").toggleClass("destaque")
+
+    </script>
+</body>

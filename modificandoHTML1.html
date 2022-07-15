@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Modificando HTML #01</h1>
+    <div id='conteudo1'></div>
+    <div id='conteudo2'></div>
+    <div id='conteudo3'></div>
+    <div id='conteudo4'></div>
+    <div id='conteudo5'></div>
+    <div class='conteudo6'></div>
+    <div class='conteudo6'></div>
+    
+    <script>
+        // Conteúdo 1
+        $("#conteudo1").append("<p>Olá</p>")
+
+        // Conteúdo 2
+        const elementos = [
+            $("<li>").append("<a href='#'>Arroz</a>"),
+            $("<li>").append("Feijão"),
+            $("<li>").append("<a href='#'>Carne</a>")
+        ]
+        const lista = $("<ul><li>Sorvete</li></ul>").append(elementos)
+        $("#conteudo2").append(lista)
+        
+        // Conteúdo 3
+        const elementos2 = [
+            $("<li>").append("<a href='#'>Arroz</a>"),
+            $("<li>").append("Feijão"),
+            $("<li>").append("<a href='#'>Carne</a>")
+        ]
+        const lista2 = $("<ul><li>Sorvete</li></ul>").prepend(elementos2)
+        $("#conteudo3").append(lista2)
+
+        // Conteúdo 4
+        $("#conteudo4").append("<h1>1</h1>", "<h1>2</h1>").prepend("<h1>0</h1>")// Coloco em cadeia, ou por vírgulo, ou um array
+        $("#conteudo4").html("<h1>Substituiu</h1>")
+
+        // Conteúdo 5
+        $("#conteudo5").text("Texto direto")
+
+        // Conteúdo 6
+        $("div[class='conteudo6']").html("<strong>Duas ao mesmo tempo!!!</strong>")
+    </script>
+</body>

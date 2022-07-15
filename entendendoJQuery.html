@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Entendendo jQuery</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/jquery.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Entendendo jQuery</h1>
+    <div>1</div>
+    <div>2</div>
+
+    <script>
+        // Tem utilitários e tb pode ser chamado como uma função
+        // Hide no jquery
+        $("div").hide(2000)
+        // Hide e Show e FadeOut
+        $("div").hide(2000).show(2000).fadeOut(2000)
+        // Posso pegar o objeto direto da dom, mas sem as funções do jquery presente no decorator
+        console.log($("div").get(0))
+        // Função utilitárias também existem
+        console.log($.inArray(3, [1, 2, 3]))
+        // Posso adcionar plugins
+        $.fn.fundoRoxo = function() {
+            this.css("background-color", "purple")
+            return this
+        }
+        $("body").fundoRoxo().fadeOut(2500)
+    </script>
+</body>
